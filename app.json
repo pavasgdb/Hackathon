@@ -9,6 +9,7 @@
       "android",
       "web"
     ],
+    "API_KEY":"AIzaSyB7GUUSKCkwWzZA3Kr-AnHnqdVl7c-U9bo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

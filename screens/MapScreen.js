@@ -15,6 +15,12 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import * as TaskManager from 'expo-task-manager';
+
+
+// this is for map view
+import MapView from 'react-native-maps';
+////////////////////////////
+
 import argonTheme from "../constants/Theme";
 import Images from "../constants/Images";
 import Button from '../assets/button';
@@ -24,6 +30,7 @@ const LOCATION_TASK_NAME = 'background-location-task';
 TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (error) {
       // Error occurred - check `error.message` for more details.
+      console.log("Background location error");
       return;
     }
     if (data) {
@@ -67,6 +74,10 @@ class InitialScreen extends React.Component {
         }
         await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
             accuracy: Location.Accuracy.Balanced,
+            pausesUpdatesAutomatically: false,
+            distanceInterval: 0,
+            timeInterval:100,
+
           });
         // TaskManager.defineTask(GET_LOCATION, ({ data: { eventType, region }, error }) => {
         //     if (error) {
@@ -99,6 +110,9 @@ class InitialScreen extends React.Component {
                         {this.state.posts}
                     </Text>
                     <Text style={styles.paragraph}>{this.state.location}</Text>
+
+                    <MapView style={styles.mapStyle} />
+
                 </View>
                 <View>
                     <Image source={{uri: '  '}} style={{width:30,height:30,resizeMode:'stretch'}}/>
@@ -127,6 +141,10 @@ const styles = StyleSheet.create({
         margin: 24,
         fontSize: 18,
         textAlign: 'center',
+      },
+      mapStyle: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
       },
 });
 
