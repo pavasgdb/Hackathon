@@ -19,6 +19,7 @@ import * as TaskManager from 'expo-task-manager';
 
 // this is for map view
 import MapView from 'react-native-maps';
+const {Marker} = MapView;
 ////////////////////////////
 
 import argonTheme from "../constants/Theme";
@@ -41,7 +42,12 @@ TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
   
 class InitialScreen extends React.Component {
     state = { posts: null, loaded: false,location: null,
-        errorMessage: null, }
+        errorMessage: null, region : {
+            latitude: 28.5476753,
+            longitude: 77.1862817,
+            latitudeDelta: 0.012,
+            longitudeDelta: 0.0061,
+          }, }
     componentDidMount() {
         
         fetch('http://api.openweathermap.org/data/2.5/weather?lat=28.545110&lon=77.199490&appid=43f8561e92da167bceacd986637de924')
@@ -109,10 +115,13 @@ class InitialScreen extends React.Component {
                     <Text style={{ fontSize: 30 }}>
                         {this.state.posts}
                     </Text>
-                    <Text style={styles.paragraph}>{this.state.location}</Text>
+                    <Text style={styles.paragraph}>{this.state.location}
+                    <MapView coordinate={this.state.region} region={this.state.region} style={styles.mapStyle} 
+                    />
+                    {/* <MapView.Marker coordinate={{latitude: 28.5476753,longitude: 77.1862817,}} title={"marker.title"}description={"desss"}
+                    style={styles.mapStyle} /> */}
 
-                    <MapView style={styles.mapStyle} />
-
+                    </Text>
                 </View>
                 <View>
                     <Image source={{uri: '  '}} style={{width:30,height:30,resizeMode:'stretch'}}/>
