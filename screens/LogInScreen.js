@@ -21,7 +21,7 @@ const LogInScreen = (props) => {
                 <Text style={{ paddingTop: 20, fontWeight: 'bold', fontSize: 17 }} onPress={() => console.log('Pressed')}>Forgot Password?</Text>
                 <View style={{ padding: 30, marginTop: 10, width: '100%', alignItems: 'center' }}>
                     <Button title='Log In' onSelect={() => {
-                        props.navigation.replace('Main')
+                        props.navigation.replace('Driver')
                     }} />
                 </View>
             </View>
@@ -29,9 +29,10 @@ const LogInScreen = (props) => {
 }
 const styles = StyleSheet.create({
     Logo: {
-        height: 150 / 774 * 683,
-        width: 150 / 774 * 683,
-        opacity: 20
+        width: 94.3 * 2,
+        height: 120 * 2,
+        resizeMode: 'stretch',
+        position: 'relative',
     },
     container: {
         paddingTop: 50 / 774 * 683,

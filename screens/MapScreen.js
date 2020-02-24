@@ -1,4 +1,4 @@
-import React,{ Component } from "react";
+import React, { Component } from "react";
 
 import {
     ImageBackground,
@@ -9,6 +9,7 @@ import {
     View,
     Text,
     Platform,
+    Switch
 } from "react-native";
 const { height, width } = Dimensions.get("screen");
 import Constants from 'expo-constants';
@@ -19,7 +20,7 @@ import * as TaskManager from 'expo-task-manager';
 
 // this is for map view
 import MapView from 'react-native-maps';
-const {Marker} = MapView;
+const { Marker } = MapView;
 ////////////////////////////
 
 import argonTheme from "../constants/Theme";
@@ -30,34 +31,46 @@ const LOCATION_TASK_NAME = 'background-location-task';
 
 TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (error) {
-      // Error occurred - check `error.message` for more details.
-      console.log("Background location error");
-      return;
+        // Error occurred - check `error.message` for more details.
+        console.log("Background location error");
+        return;
     }
     if (data) {
-      const { locations } = data;
-      console.log(locations);// do something with the locations captured in the background
+        var { locations } = data;
+        return locations
+    // do something with the locations captured in the background
     }
-  });
-  
+});
+
 class InitialScreen extends React.Component {
-    state = { posts: null, loaded: false,location: null,
-        errorMessage: null, region : {
+    state = {
+        posts: null,
+        loaded: false,
+        location: null,
+        errorMessage: null,
+        region: {
             latitude: 28.5476753,
             longitude: 77.1862817,
             latitudeDelta: 0.012,
             longitudeDelta: 0.0061,
-          }, }
+        },
+        marker: [{
+            latitude: 28.5476753,
+            longitude: 77.1862817,
+            title: 'Foo Place',
+            subTitle: '1234 Foo Drive'
+        }]
+    }
     componentDidMount() {
-        
+
         fetch('http://api.openweathermap.org/data/2.5/weather?lat=28.545110&lon=77.199490&appid=43f8561e92da167bceacd986637de924')
             .then(res => res.json()
                 .then((dat) => {
 
                     this.setState({
                         posts: dat.weather[0].main,
-                        img:dat.weather[0].icon,
-                        loaded: true
+                        img: dat.weather[0].icon,
+                        loaded: true,
                     })
                 })
                 .catch(console.log))
@@ -65,26 +78,26 @@ class InitialScreen extends React.Component {
             this.setState({
                 errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
             });
-            } else {
+        } else {
             this._getLocationAsync();
-            }
+        }
     }
 
     _getLocationAsync = async () => {
 
         let { status } = await Permissions.askAsync(Permissions.LOCATION);
         if (status !== 'granted') {
-          this.setState({
-            errorMessage: 'Permission to access location was denied',
-          });
+            this.setState({
+                errorMessage: 'Permission to access location was denied',
+            });
         }
         await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
             accuracy: Location.Accuracy.Balanced,
             pausesUpdatesAutomatically: false,
             distanceInterval: 0,
-            timeInterval:100,
+            timeInterval: 100,
 
-          });
+        });
         // TaskManager.defineTask(GET_LOCATION, ({ data: { eventType, region }, error }) => {
         //     if (error) {
         //       // check `error.message` for more details.
@@ -94,8 +107,8 @@ class InitialScreen extends React.Component {
         //     this.setState({ location });
         //   });
 
-        
-      };
+
+    };
 
 
     render() {
@@ -107,24 +120,42 @@ class InitialScreen extends React.Component {
         // } else if (this.state.location) {
         // text = JSON.stringify(this.state.location);
         // }
-        
-        console.log(this.state.img)
         return (
             <View style={{ flex: 1, padding: 30, backgroundColor: 'white' }}>
+                {/* <View style={styles.filterContainer}>
+                    <Text>Show my location</Text>
+                    <Switch
+                        trackColor={{ true: '#' }}
+                        thumbColor={Platform.OS === 'android' ? '#faaf04': ''}
+                        value={props.state}
+                        onValueChange={props.onChange}
+                    />
+                </View> */}
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
                     <Text style={{ fontSize: 30 }}>
                         {this.state.posts}
                     </Text>
-                    <Text style={styles.paragraph}>{this.state.location}
-                    <MapView coordinate={this.state.region} region={this.state.region} style={styles.mapStyle} 
-                    />
+                    <Text style={styles.paragraph}>{this.state.location}</Text>
+                    <MapView
+                        coordinate={this.state.region}
+                        region={this.state.region}
+                        style={styles.mapStyle}
+                        //showsMyLocationButton={true}
+                    // annotation={this.state.marker}
+                    >
+                        <MapView.Marker
+                            coordinate={this.state.region}
+                            // {latitude:global.variable[0].coords.latitude,longitude:global.variable[0].coords.longitude
+                            title={'abcd'}
+                            description={'1234'} />
+                    </MapView>
                     {/* <MapView.Marker coordinate={{latitude: 28.5476753,longitude: 77.1862817,}} title={"marker.title"}description={"desss"}
                     style={styles.mapStyle} /> */}
 
-                    </Text>
+
                 </View>
                 <View>
-                    <Image source={{uri: '  '}} style={{width:30,height:30,resizeMode:'stretch'}}/>
+                    <Image source={{ uri: '  ' }} style={{ width: 30, height: 30, resizeMode: 'stretch' }} />
                 </View>
             </View>
         );
@@ -150,11 +181,11 @@ const styles = StyleSheet.create({
         margin: 24,
         fontSize: 18,
         textAlign: 'center',
-      },
-      mapStyle: {
+    },
+    mapStyle: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-      },
+    },
 });
 
 export default InitialScreen;

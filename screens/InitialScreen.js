@@ -19,7 +19,7 @@ class InitialScreen extends React.Component {
         const { navigation } = this.props;
 
         return (
-            <View style={{ flex: 1, backgroundColor:'white',paddingTop:30 }}>
+            <View style={{ flex: 1, backgroundColor:'white',paddingTop:100 }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Image source={Images.LogoOnboarding} style={styles.logo} />
                 </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         //height: 54,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop:30
+        paddingBottom:30
     },
     logo: {
         width: 94.3 * 2,

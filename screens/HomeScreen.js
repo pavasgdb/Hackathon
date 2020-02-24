@@ -18,7 +18,7 @@ class HomeScreen extends React.Component {
     render() {
         const { navigation } = this.props;
         return (
-            <View style={{ flex: 1, padding: 30,backgroundColor:'white' }}>
+            <View style={{ flex: 1, padding: 30,backgroundColor:'white',justifyContent:'space-around' }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Image source={Images.LogoOnboarding} style={styles.logo} />
                 </View>
@@ -34,7 +34,7 @@ class HomeScreen extends React.Component {
                     <View style={styles.button}>
                         <Button myWidth={{ width: '100%' }}
                             title={'Student'}
-                            onSelect={()=>{navigation.navigate("LogIn")}}
+                            onSelect={()=>{navigation.navigate("Main")}}
                         />
                     </View>
                 </View>
