@@ -1,5 +1,5 @@
 import React from "react";
-import { Easing, Animated, View } from "react-native";
+import { Easing, Animated, View, Text } from "react-native";
 import {
 
     createAppContainer
@@ -17,6 +17,7 @@ import Schedule from "../screens/Schedule";
 import LogInScreen from '../screens/LogInScreen';
 import DriverScreen from "../screens/DriverScreen";
 import DriverHomeScreen from "../screens/driverHomeScreen"
+import LogInScreen1 from "../screens/LogInScreen1";
 // header for screens
 //import Header from "../components/Header";
 
@@ -64,6 +65,11 @@ const MapNavigator = createStackNavigator({
         ...TransitionPresets.SlideFromRightIOS,
         header: () =>
             <View style={{ flexDirection: 'row', width: '100%', height: 100, alignItems: 'center', backgroundColor: '#faaf04', justifyContent: 'center', paddingTop: 28 }}>
+                <View style={{alignItems:'center',width:'75%'}}>
+                    <Text style={{color:'white',fontSize:30,}}>
+                        Welcome User!!!
+                    </Text>
+                </View>
                 <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center', paddingRight: 20 }}>
                     <MaterialCommunityIcons
                         name="logout"
@@ -161,7 +167,8 @@ const AppNavigator = createStackNavigator(
     {
         Initial: InitialScreen,
         Home: HomeScreen,
-        LogIn: LogInScreen,
+        LogInDriver: LogInScreen,
+        LogInStu:LogInScreen1,
         Main: {
             screen: TabScreens,
         },

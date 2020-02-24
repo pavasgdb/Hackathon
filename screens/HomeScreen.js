@@ -18,24 +18,26 @@ class HomeScreen extends React.Component {
     render() {
         const { navigation } = this.props;
         return (
-            <View style={{ flex: 1, padding: 30,backgroundColor:'white',justifyContent:'space-around' }}>
+            <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 130 }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Image source={Images.LogoOnboarding} style={styles.logo} />
                 </View>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={styles.button}>
-                        <Button myWidth={{ width: '100%' }}
-                            title={'Driver'}
-                            onSelect={()=>{navigation.navigate("LogIn")}}
-                        />
+                <View style={{paddingBottom:100}}>
+                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={styles.button}>
+                            <Button myWidth={{ width: '100%' }}
+                                title={'Driver'}
+                                onSelect={() => { navigation.navigate("LogInDriver") }}
+                            />
+                        </View>
                     </View>
-                </View>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <View style={styles.button}>
-                        <Button myWidth={{ width: '100%' }}
-                            title={'Student'}
-                            onSelect={()=>{navigation.navigate("Main")}}
-                        />
+                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={styles.button}>
+                            <Button myWidth={{ width: '100%' }}
+                                title={'Student'}
+                                onSelect={() => { navigation.navigate("LogInStu") }}
+                            />
+                        </View>
                     </View>
                 </View>
             </View>
@@ -45,15 +47,15 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
     button: {
-        width: 94.3 * 2,
+        width: 94.3 * 2.5,
         //height: 54,
         alignItems: 'center',
         justifyContent: 'center',
-        padding:20
+        paddingTop: 30
     },
     logo: {
-        width: 94.3 * 2,
-        height: 120 * 2,
+        width: 94.3 * 2.5,
+        height: 120 * 2.5,
         resizeMode: 'stretch',
         position: 'relative',
     },

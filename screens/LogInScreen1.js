@@ -11,7 +11,7 @@ const LogInScreen1 = (props) => {
                 <Image source={Images.LogoOnboarding} style={styles.logo} />
             </View>
             <View style={{ width: '90%', justifyContent: 'space-between' }}>
-                <TextInput placeholder='Enter your Email-Id' style={styles.emailContainer} keyboardType='email-address' blurOnSubmit={true} autoCompleteType='email'>
+                <TextInput placeholder='Enter Official Mail-Id' style={styles.emailContainer} keyboardType='email-address' blurOnSubmit={true} autoCompleteType='email'>
                 </TextInput>
             </View>
             <View style={{ width: '90%', paddingTop: 40 }}>
@@ -23,7 +23,7 @@ const LogInScreen1 = (props) => {
                 <View style={styles.button}>
                     <Button myWidth={{ width: '100%' }}
                         title={'Log In'}
-                        onSelect={() => { props.navigation.replace('Driver') }}
+                        onSelect={() => { props.navigation.replace('Main') }}
                     />
                 </View>
             </View>
