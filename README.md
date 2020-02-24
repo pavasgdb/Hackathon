@@ -19,4 +19,4 @@ Type any one of the following commands
 expo start
 npm start
 ```
-## Sanpshots
+## Snapshots
