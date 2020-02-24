@@ -19,23 +19,28 @@ class InitialScreen extends React.Component {
         const { navigation } = this.props;
 
         return (
-            <View style={{ flex: 1, backgroundColor:'white',paddingTop:100 }}>
+            <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 130 }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Image source={Images.LogoOnboarding} style={styles.logo} />
                 </View>
-                <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 30 }}>
-                        Track Shuttle Bus
+                <View style={{ justifyContent: 'center', alignItems: 'center',paddingTop:100 }}>
+                    <Text style={{ fontSize: 40, fontWeight: 'bold' }}>
+                        Bus Tracking Device
                     </Text>
-                    <Text style={{ fontSize: 15 }}>
-                        Save time by not wating for bus
+                </View>
+                <View style={{ flex: 1, justifyContent: 'flex-start', padding: 20 }}>
+                    <Text style={{ fontSize: 20,padding:20, fontWeight: 'bold' }}>
+                    • Track shuttle bus
+                    </Text>
+                    <Text style={{ fontSize: 20,padding:20, fontWeight: 'bold' }}>
+                    • Now no more wating for Bus
                     </Text>
                 </View>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <View style={styles.button}>
                         <Button myWidth={{ width: '100%' }}
                             title={'Get Started'}
-                            onSelect={()=>{navigation.navigate("Home")}}
+                            onSelect={() => { navigation.navigate("Home") }}
                         />
                     </View>
                 </View>
@@ -46,15 +51,15 @@ class InitialScreen extends React.Component {
 
 const styles = StyleSheet.create({
     button: {
-        width: 94.3 * 2,
+        width: 94.3 * 2.5,
         //height: 54,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom:30
+        paddingBottom: 100
     },
     logo: {
-        width: 94.3 * 2,
-        height: 120 * 2,
+        width: 94.3 * 2.5,
+        height: 120 * 2.5,
         resizeMode: 'stretch',
         position: 'relative',
     },
