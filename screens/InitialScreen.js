@@ -29,10 +29,10 @@ class InitialScreen extends React.Component {
                     </Text>
                 </View>
                 <View style={{ flex: 1, justifyContent: 'flex-start', padding: 20 }}>
-                    <Text style={{ fontSize: 20,padding:20, fontWeight: 'bold' }}>
+                    <Text style={{ fontSize: 20,padding:20,paddingBottom:15 }}>
                     • Track shuttle bus
                     </Text>
-                    <Text style={{ fontSize: 20,padding:20, fontWeight: 'bold' }}>
+                    <Text style={{ fontSize: 20,padding:20,paddingTop:15}}>
                     • Now no more wating for Bus
                     </Text>
                 </View>

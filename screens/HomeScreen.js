@@ -34,7 +34,7 @@ class HomeScreen extends React.Component {
                     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                         <View style={styles.button}>
                             <Button myWidth={{ width: '100%' }}
-                                title={'Student'}
+                                title={'User'}
                                 onSelect={() => { navigation.navigate("LogInStu") }}
                             />
                         </View>
