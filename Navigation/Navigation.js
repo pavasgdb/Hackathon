@@ -12,7 +12,7 @@ import { Ionicons, MaterialIcons, MaterialCommunityIcons, AntDesign } from '@exp
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import HomeScreen from "../screens/HomeScreen";
 import InitialScreen from "../screens/InitialScreen";
-import MapScreen from "../screens/MapScreen";
+import MapScreen from "../screens/MapScreen2";
 import Schedule from "../screens/Schedule";
 import LogInScreen from '../screens/LogInScreen';
 import DriverScreen from "../screens/DriverScreen";

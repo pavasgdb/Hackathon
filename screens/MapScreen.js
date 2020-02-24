@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 
 import {
-    ImageBackground,
     Image,
     StyleSheet,
-    StatusBar,
     Dimensions,
     View,
     Text,
     Platform,
-    Switch
 } from "react-native";
-const { height, width } = Dimensions.get("screen");
+
+//const { height, width } = Dimensions.get("screen");
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
@@ -38,21 +36,24 @@ TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (data) {
         var { locations } = data;
         return locations
-    // do something with the locations captured in the background
+        // do something with the locations captured in the background
     }
 });
 
-class InitialScreen extends React.Component {
+class MapScreen extends React.Component {
     state = {
-        posts: null,
+        weather: null,
+        img: '',
+        temp: '',
+        wind: '',
         loaded: false,
         location: null,
         errorMessage: null,
         region: {
             latitude: 28.5476753,
             longitude: 77.1862817,
-            latitudeDelta: 0.012,
-            longitudeDelta: 0.0061,
+            latitudeDelta: 0.006,
+            longitudeDelta: 0.003,
         },
         marker: [{
             latitude: 28.5476753,
@@ -68,8 +69,10 @@ class InitialScreen extends React.Component {
                 .then((dat) => {
 
                     this.setState({
-                        posts: dat.weather[0].main,
+                        weather: dat.weather[0].main,
                         img: dat.weather[0].icon,
+                        temp: Math.floor(dat.main.temp - 273) + '°C',
+                        wind: dat.wind.speed + 'kmph',
                         loaded: true,
                     })
                 })
@@ -121,42 +124,66 @@ class InitialScreen extends React.Component {
         // text = JSON.stringify(this.state.location);
         // }
         return (
-            <View style={{ flex: 1, padding: 30, backgroundColor: 'white' }}>
-                {/* <View style={styles.filterContainer}>
-                    <Text>Show my location</Text>
-                    <Switch
-                        trackColor={{ true: '#' }}
-                        thumbColor={Platform.OS === 'android' ? '#faaf04': ''}
-                        value={props.state}
-                        onValueChange={props.onChange}
-                    />
-                </View> */}
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-                    <Text style={{ fontSize: 30 }}>
-                        {this.state.posts}
-                    </Text>
-                    <Text style={styles.paragraph}>{this.state.location}</Text>
-                    <MapView
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
+                <MapView
+                    coordinate={this.state.region}
+                    region={this.state.region}
+                    style={styles.mapStyle}
+                //showsMyLocationButton={true}
+                >
+                    <MapView.Marker
                         coordinate={this.state.region}
-                        region={this.state.region}
-                        style={styles.mapStyle}
-                        //showsMyLocationButton={true}
-                    // annotation={this.state.marker}
-                    >
-                        <MapView.Marker
-                            coordinate={this.state.region}
-                            // {latitude:global.variable[0].coords.latitude,longitude:global.variable[0].coords.longitude
-                            title={'abcd'}
-                            description={'1234'} />
-                    </MapView>
-                    {/* <MapView.Marker coordinate={{latitude: 28.5476753,longitude: 77.1862817,}} title={"marker.title"}description={"desss"}
-                    style={styles.mapStyle} /> */}
+                        // {latitude:global.variable[0].coords.latitude,longitude:global.variable[0].coords.longitude
+                        title={'abcd'}
+                        description={'1234'}
+                        image={Images.Marker} />
+                </MapView>
+                <View style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                    backgroundColor: 'grey',
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    padding: 20,
+                    width:100,
+                    height:100,
+                    borderBottomLeftRadius:5
+                }}>
+                    <View>
+                        <Image source={{ uri: 'http://openweathermap.org/img/w/' + '04n' + '.png' }} style={{ width: 50, height: 50, resizeMode: 'stretch' }} />
+                    </View>
+                    {/* <Text>
+                        Temp -->
+                       </Text> */}
+                    <Text style={{ fontSize: 15, }}>
+                        {this.state.temp}
+                    </Text>
+                </View>
+                {/* <View style={{ width: '100%', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row' }}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text>
+                      Weather Condition -->
+                    </Text>
+                    <Text style={{ fontSize: 15, }}>
+                        {this.state.weather}
+                    </Text>
+                    </View> 
+                    <View style={{flexDirection: 'row'}}>
+                       <Text>
+                           Temp -->  
+                       </Text>
+                        <Text style={{ fontSize: 15, }}>
+                            {this.state.temp}
+                        </Text>
+                    </View>
+                    <View>
+                        <Image source={{ uri: 'http://openweathermap.org/img/w/' + '04n' + '.png' }} style={{ width: 50, height: 50, resizeMode: 'stretch' }} />
+                    </View>
+                    <Text style={styles.paragraph}>{this.state.location}</Text>
+                </View> */}
 
 
-                </View>
-                <View>
-                    <Image source={{ uri: '  ' }} style={{ width: 30, height: 30, resizeMode: 'stretch' }} />
-                </View>
             </View>
         );
     }
@@ -177,15 +204,11 @@ const styles = StyleSheet.create({
         resizeMode: 'stretch',
         position: 'relative',
     },
-    location: {
-        margin: 24,
-        fontSize: 18,
-        textAlign: 'center',
-    },
     mapStyle: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        width: '100%',
+        height: '100%',
+        flex: 1,
     },
 });
 
-export default InitialScreen;
+export default MapScreen;
