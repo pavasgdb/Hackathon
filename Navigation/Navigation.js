@@ -16,6 +16,7 @@ import MapScreen from "../screens/MapScreen2";
 import Schedule from "../screens/Schedule";
 import LogInScreen from '../screens/LogInScreen';
 import DriverScreen from "../screens/DriverScreen";
+import DriverHomeScreen from "../screens/driverHomeScreen"
 // header for screens
 //import Header from "../components/Header";
 
@@ -164,7 +165,8 @@ const AppNavigator = createStackNavigator(
         Main: {
             screen: TabScreens,
         },
-        Driver:DriverScreen
+        Driver:DriverHomeScreen,
+        Driver1:DriverScreen
     },
     {
         headerMode: 'none',

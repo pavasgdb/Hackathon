@@ -7,7 +7,7 @@ const Width=Dimensions.get('window').width;
 const Button = props => {
     return (
 
-        <TouchableOpacity style={{width:'100%',...props.myWidth}}activeOpacity={0.8} onPress={props.onSelect}>
+        <TouchableOpacity style={{width:'100%',...props.myWidth}}activeOpacity={0.7} onPress={props.onSelect}>
             <View style={{...styles.ButtonContainer,...props.sty}}>
                 <Text style={{ color: 'white',textAlign:'center',fontSize:20}} >
                     {props.title}
