@@ -40,7 +40,7 @@ styles=StyleSheet.create({
         paddingTop: 30
     },
     gradient:{
-        flex: 0.8,
+        flex: 0.9,
         justifyContent: 'center',
         alignItems: 'center'
     },
