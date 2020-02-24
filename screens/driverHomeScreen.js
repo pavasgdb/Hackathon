@@ -28,7 +28,7 @@ const DriverHomeScreen = (props)=>{
 };
 styles=StyleSheet.create({
     gradient:{
-        flex: 0.8,
+        flex: 0.9,
         justifyContent: 'center',
         alignItems: 'center'
     },

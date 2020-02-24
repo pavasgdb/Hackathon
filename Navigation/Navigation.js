@@ -17,6 +17,7 @@ import Schedule from "../screens/Schedule";
 import LogInScreen from '../screens/LogInScreen';
 import DriverScreen from "../screens/DriverScreen";
 import DriverHomeScreen from "../screens/driverHomeScreen"
+import TimeTableScreen from "../screens/TimeTableScreen"
 // header for screens
 //import Header from "../components/Header";
 
@@ -84,7 +85,8 @@ const MapNavigator = createStackNavigator({
     })
 })
 const ScheduleNavigator = createStackNavigator({
-    HeaderProject: Schedule
+    HeaderProject: Schedule,
+    TimeTable: TimeTableScreen
 }, {
     defaultNavigationOptions: ({ navigation }) => ({
         ...TransitionPresets.SlideFromRightIOS,
