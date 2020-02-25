@@ -38,13 +38,13 @@ class MapScreen extends Component {
             },
         }
     }
-    componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 2000);
-    }
+    // componentDidMount() {
+    //     this.interval = setInterval(() => this.tick(), 2000);
+    // }
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+    // componentWillUnmount() {
+    //     clearInterval(this.interval);
+    // }
     componentDidMount() {
         fetch('http://api.openweathermap.org/data/2.5/weather?lat=28.545110&lon=77.199490&appid=43f8561e92da167bceacd986637de924')
             .then(res => res.json()

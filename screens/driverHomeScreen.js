@@ -14,7 +14,7 @@ const DriverHomeScreen = (props)=>{
                         {/* <View style={styles.button}> */}
                             <Button myWidth={{ width: '70%' }}
                                 title={'Go Live'}
-                                onSelect={() => { props.navigation.replace('Driver1') }}
+                                onSelect={() => { props.navigation.navigate('Driver1') }}
                             />
                         {/* </View> */}
                     </View>

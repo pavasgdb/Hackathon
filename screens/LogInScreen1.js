@@ -1,33 +1,39 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, Image, ShadowPropTypesIOS, Dimensions } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image, ShadowPropTypesIOS, Dimensions,KeyboardAvoidingView } from 'react-native';
 import Button from '../assets/button';
 import Images from "../constants/Images";
 const { height, width } = Dimensions.get("screen");
 
 const LogInScreen1 = (props) => {
     return (
-        <View style={styles.container}>
-            <View style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center', }}>
-                <Image source={Images.LogoOnboarding} style={styles.logo} />
-            </View>
-            <View style={{ width: '90%', justifyContent: 'space-between' }}>
-                <TextInput placeholder='Enter Official Mail-Id' style={styles.emailContainer} keyboardType='email-address' blurOnSubmit={true} autoCompleteType='email'>
-                </TextInput>
-            </View>
-            <View style={{ width: '90%', paddingTop: 40 }}>
-                <TextInput secureTextEntry={true} placeholder='Enter Your Password' style={styles.emailContainer} blurOnSubmit={true} autoCompleteType='password' >
-                </TextInput>
-            </View>
-            <Text style={{ paddingTop: 40, fontWeight: 'bold', fontSize: 17 }} onPress={() => console.log('Pressed')}>Forgot Password?</Text>
-            <View style={{ alignItems: 'center', justifyContent: 'center',width:'100%' }}>
-                <View style={styles.button}>
-                    <Button myWidth={{ width: '100%' }}
-                        title={'Log In'}
-                        onSelect={() => { props.navigation.replace('Main') }}
-                    />
+        
+            <View style={styles.container}>
+                <View style={{ flex: 1, width: '100%', alignItems: 'center', justifyContent: 'center', }}>
+                    <Image source={Images.LogoOnboarding} style={styles.logo} />
                 </View>
+                <KeyboardAvoidingView
+            behavior="padding"
+            keyboardVerticalOffset={-70}
+            style={{ width:'100%' }}>
+                <View style={{ width: '90%', justifyContent: 'space-between' }}>
+                    <TextInput placeholder='Enter Official Mail-Id' style={styles.emailContainer} keyboardType='email-address' blurOnSubmit={true} autoCompleteType='email'>
+                    </TextInput>
+                </View>
+                <View style={{ width: '90%', paddingTop: 40 }}>
+                    <TextInput secureTextEntry={true} placeholder='Enter Your Password' style={styles.emailContainer} blurOnSubmit={true} autoCompleteType='password' >
+                    </TextInput>
+                </View>
+                <Text style={{ paddingTop: 40, fontWeight: 'bold', fontSize: 17 }} onPress={() => console.log('Pressed')}>Forgot Password?</Text>
+                <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                    <View style={styles.button}>
+                        <Button myWidth={{ width: '100%' }}
+                            title={'Log In'}
+                            onSelect={() => { props.navigation.replace('Main') }}
+                        />
+                    </View>
+                </View>
+                </KeyboardAvoidingView>
             </View>
-        </View>
     );
 }
 const styles = StyleSheet.create({
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: height,
         width: width,
-        paddingBottom:100
+        paddingBottom: 100
     },
     heading: {
         fontSize: 30,

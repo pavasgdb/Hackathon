@@ -30,13 +30,7 @@ class MapScreen extends Component {
             },
         }
     }
-    componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 10000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+    
     componentDidMount() {
         this.interval = setInterval(() => {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -54,7 +48,7 @@ class MapScreen extends Component {
             },
                 (error) => alert(JSON.stringify(error)),
                 { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
-    }
+    },1000)}
 
     componentWillUnmount() {
         clearInterval(this.interval);
