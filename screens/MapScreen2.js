@@ -97,7 +97,13 @@ class MapScreen extends Component {
                         // {latitude:global.variable[0].coords.latitude,longitude:global.variable[0].coords.longitude
                         title={'abcd'}
                         description={'1234'}
-                        image={Images.Marker} />
+                        image={Images.Marker}
+                        flat={false}
+                        style={{
+                            transform: [{
+                                rotate: '113deg'
+                            }]
+                        }} />
                 </MapView>
                 <View style={{
                     position: 'absolute',

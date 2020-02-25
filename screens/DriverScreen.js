@@ -54,7 +54,6 @@ class MapScreen extends Component {
             },
                 (error) => alert(JSON.stringify(error)),
                 { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 });
-        }, 1000)
     }
 
     componentWillUnmount() {
@@ -75,7 +74,12 @@ class MapScreen extends Component {
                         // {latitude:global.variable[0].coords.latitude,longitude:global.variable[0].coords.longitude
                         title={'abcd'}
                         description={'1234'}
-                        image={Images.Marker} />
+                        image={Images.Marker}
+                        style={{
+                            transform: [{
+                                rotate: '113deg'
+                            }]
+                        }} />
                 </MapView>
             </View>
         );

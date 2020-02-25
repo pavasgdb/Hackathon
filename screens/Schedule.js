@@ -27,7 +27,7 @@ class InitialScreen extends React.Component {
 
         return (
             
-            <ImageBackground source={require('../assets/schedule1.jpg')} style={{width: '100%', height: '100%'}} imageStyle={{opacity:0.05}}>
+            <ImageBackground source={require('../assets/schedule1.jpg')} style={{width: '100%', height: '100%'}} imageStyle={{opacity:0.03}}>
             <View style={{ flex: 1, paddingTop: 30,paddingHorizontal:10 , }}>    
                 <View style={{ flex: 1, marginTop:30, paddingTop: 10,paddingHorizontal:10, flexDirection:'row' }}>
                     <Text style={{ fontSize: 25, marginRight:10, marginTop:15, color:'black' }}>

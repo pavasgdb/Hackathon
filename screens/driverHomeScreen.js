@@ -9,22 +9,22 @@ const DriverHomeScreen = (props)=>{
         {/* <LinearGradient colors={['#faaf40', '#ffe3ff']} style={styles.gradient}> */}
             <Text style={{fontSize:30 ,marginBottom:40,paddingVertical:50}}>Welcome Pavas!!!</Text>            
             <Image style={styles.imageContainer} source={require('../assets/45498.jpg')}/>
-            <View style={{paddingBottom:100,paddingTop:50}}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                        <View style={styles.button}>
-                            <Button myWidth={{ width: '100%' }}
+            <View style={{paddingBottom:100,paddingTop:50,width:'100%'}}>
+                    <View style={{ paddingVertical:40, alignItems: 'center', justifyContent: 'center',width:'100%' }}>
+                        {/* <View style={styles.button}> */}
+                            <Button myWidth={{ width: '70%' }}
                                 title={'Go Live'}
                                 onSelect={() => { props.navigation.replace('Driver1') }}
                             />
-                        </View>
+                        {/* </View> */}
                     </View>
-                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                        <View style={styles.button}>
-                            <Button myWidth={{ width: '100%' }}
+                    <View style={{ alignItems: 'center', justifyContent: 'center',paddingTop:20 }}>
+                        {/* <View style={styles.button}> */}
+                            <Button myWidth={{ width: '70%' }}
                                 title={'Sign Out'}
                                 onSelect={() => { props.navigation.replace('Home') }}
                             />
-                        </View>
+                        {/* </View> */}
                     </View>
                 </View>
             {/* </LinearGradient> */}
